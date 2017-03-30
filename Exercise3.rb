@@ -6,24 +6,28 @@ class Player
     @live = live
   end
 
-  def collect_treasure(x)
-    x += 10
+  def level_up()
+    @live += 1
+  end
+
+  def collect_treasure()
+    @gold_coins += 10
+    puts "abc"
+    puts level_up()
+    puts "abc"
+  end
+
+  def health_points()
 
   end
 
-  def health_points(x)
-    10
-  end
 
-  def level_up(x)
-    5 + 1
-  end
 end
 
 
 edwin = Player.new(0,10,5)
 
-puts edwin.levelup
+puts edwin.level_up
 puts edwin.collect_treasure
 puts edwin.do battle(damage)
 puts edwin.restart
