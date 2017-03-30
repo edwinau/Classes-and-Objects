@@ -1,36 +1,57 @@
 class Player
-  attr_accessor :gold_coins, :health_points, :live
-  def initialize(gold_coins, health_points, live)
-    @gold_coins = gold_coins
-    @health_points = health_points
-    @live = live
+  attr_accessor :gold_coins, :health_points, :life
+  def initialize
+    @gold_coins = 0
+    @health_points = 10
+    @life = 5
   end
 
   def level_up()
-    @live += 1
+    @life += 1
   end
 
   def collect_treasure()
-    @gold_coins += 10
-    puts "abc"
+    puts "#{@gold_coins += 10}"
     puts level_up()
-    puts "abc"
   end
 
-  def health_points()
+  def do_battle(damage)
+    @health_points -= damage
+      if@life == 1
+        restart()
+        puts "game over, restarting"
+      elsif @health_points <= 0
+        @health_points == 10
+        @life -= 1
+        puts "life lost"
 
+      else
+        puts @health_points
+      end
   end
 
+  def restart
+    @life = 5
+    @gold_coins = 0
+    @health_points = 10
+  end
 
 end
 
 
-edwin = Player.new(0,10,5)
-
-puts edwin.level_up
-puts edwin.collect_treasure
-puts edwin.do battle(damage)
-puts edwin.restart
+# edwin = Player.new
+# puts "1."
+# puts edwin.level_up
+# puts " "
+# puts "2."
+# puts edwin.collect_treasure
+# puts " "
+# puts "3."
+# puts edwin.do_battle(damage)
+# puts " "
+# puts "4."
+# puts edwin.restart
+# puts " "
 
 
 
