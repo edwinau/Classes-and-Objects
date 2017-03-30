@@ -1,11 +1,11 @@
 class Paperboy
-  attr_accessor :name, :experience,
-  attr_reader: :earnings
+  attr_accessor :name, :experience
+  attr_reader :earnings
   def initialize
-    @dailyquota = 50
-    @eachpaper = .25
-    @experience =
-    @earnings = 0
+    @dailyquota = 50.00
+    @eachpaper = 0.25
+    @experience = 25.00
+    @earnings = true
   end
 
   def quota
@@ -13,13 +13,19 @@ class Paperboy
   end
 
   def deliver(start_address, end_address)
-# This method will take two house numbers and return the amount of money earned on this delivery as a floating point number. It should also update the paperboy's experience!
+      @earnings = (end_address - start_address) * @eachpaper
 
   end
 
-  end
+  def report
+    puts "I'm #{@name}, I've delivered #{@quote} papers and I've earned $ #{@earnings} so far!"
   end
 end
+
+
+
+# This method will take two house numbers and return the amount of money earned on this delivery as a floating point number. It should also update the paperboy's experience!
+
 
 # class Player
 #   attr_accessor :gold_coins, :health_points, :life
