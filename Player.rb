@@ -7,11 +7,11 @@ class Player
     @lives = 5
     @gold_coins = 0
     @health_points = 10
-    puts "#{@name}, lives: #{@lives}, coins: #{@gold_coins}, health: #{@health_points}."
+    puts "Welcome #{@name}! you have: #{@lives} lives, #{@gold_coins} coins, #{@health_points} health_points."
   end
 
   def level_up
-    return @lives += 1
+    @lives += 1
   end
 
   def collect_treasure
@@ -19,15 +19,41 @@ class Player
     puts "coins #{@gold_coins}"
       if @gold_coins == 50
         level_up
-        puts "lives #{@lives}"
         @gold_coins = 0
+        puts "LEVEL UP!  now life(s): #{@lives}"
       end
   end
 
-  # def do_battle(damage)
-  #   @health_points = @health_points - damage
-  #   return @lives
-  # end
+  def do_battle(damage)
+    puts "#{@lives} lives left"
+    @health_points -= damage
+    puts "health is now #{@health_points}."
+      if @health_points == 0
+        puts "live lost."
+        @lives -= 1
+        @health_points = 10
+        puts "now #{@lives} life(s) left."
+          if @lives == 0
+            puts "Game over. Restarting!"
+            restart
+          end
+      end
+    end
+
+    def restart
+      @lives = 5
+      @gold_coins = 0
+      @health_points = 10
+      puts "Welcome back#{@name}! you now have: #{@lives} lives, #{@gold_coins} coins, #{@health_points} health_points."
+    end
+      #     if @lives == 0
+      #
+      #       return restart
+      #     end
+      # end
+
+
+
 end
 
-puts edwin=Player.new("edwin")
+# puts edwin=Player.new("edwin")
